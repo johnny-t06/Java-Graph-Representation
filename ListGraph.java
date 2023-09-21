@@ -1,4 +1,5 @@
 import java.util.*;
+import java.io.*;
 
 public class ListGraph implements Graph {
     
@@ -179,4 +180,14 @@ public class ListGraph implements Graph {
     public boolean connected(String n1, String n2) {
 	    throw new UnsupportedOperationException();
     }
+    public void dfs() {
+        int mapSize = nodes.size();
+        boolean visted[] = new boolean[mapSize]; 
+        dfsHelper()
+
+    }
+    public void dfsHelper(String search, string targer) {
+
+    }
+
 }
