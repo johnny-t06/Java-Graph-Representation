@@ -1,6 +1,4 @@
 
-
-import java.util.NoSuchElementException;
 import java.util.*;
 
 
@@ -330,6 +328,21 @@ public class Main {
 		// assert !subgraph.hasEdge("C", "D");		
 		//goes to exception, spec says do not need handle
 	}
+
+	public static void connectedNonEmpty() {
+		Graph g = new ListGraph();
+		assert g.addNode("A");
+		assert g.addNode("B");
+		assert g.addNode("C");
+		assert g.addNode("D");
+		assert g.addEdge("A", "B");
+		assert g.addEdge("B", "C");
+		assert g.addEdge("A", "D");
+
+		assert g.connected("A", "B");
+		assert g.connected("A", "D");
+		assert !g.connected("B", "D");
+	}
     public static void main(String[] args) {
 		test1();
 		addEdgethrow();
@@ -347,6 +360,7 @@ public class Main {
 		unionOverlap();
 		subGraphNonEmpty();
 		subGraphEmpty();
+		connectedNonEmpty();
     }
 
 }

@@ -1,9 +1,24 @@
 import java.util.*;
-import java.io.*;
+// import java.io.*;
 
 public class ListGraph implements Graph {
     
     private HashMap<String, LinkedList<String>> nodes = new HashMap<>();
+    public class BoolChecker{
+        private boolean value;
+
+        public BoolChecker(boolean value) {
+            this.value = value;
+        }
+        
+        public boolean getValue() {
+            return value;
+        }
+
+        public void setValue(boolean value) {
+            this.value = value;
+        }
+    }
     
     public void print() {
         for (String key : nodes.keySet()) { // iterate over key of HashMap
@@ -61,7 +76,7 @@ public class ListGraph implements Graph {
         
         for (String key : nodes.keySet()) { // iterate over key of HashMap
             for (String value : nodes.get(key)) { // iterate through elements of nodes.get("a")
-                if (n == value) {
+                if (n.equals(value)) {
                     nodes.get(key).remove(value);
                 }
             }
@@ -77,7 +92,7 @@ public class ListGraph implements Graph {
         }
 
         for (String value : nodes.get(n1)) {
-            if (n2 == value) {
+            if (n2.equals(value)) {
                 nodes.get(n1).remove(value);
                 return true;
             }
@@ -112,7 +127,7 @@ public class ListGraph implements Graph {
         List<String> allpred = new LinkedList<>();
         for (String key : nodes.keySet()) {
             for (String value : nodes.get(key)) {
-                if (value == n) {
+                if (value.equals(n)) {
                     allpred.add(key);
                 }
             }
@@ -178,16 +193,53 @@ public class ListGraph implements Graph {
     }
 
     public boolean connected(String n1, String n2) {
-	    throw new UnsupportedOperationException();
-    }
-    public void dfs() {
-        int mapSize = nodes.size();
-        boolean visted[] = new boolean[mapSize]; 
-        dfsHelper()
+        if (!(hasNode(n1) && hasNode(n2))) {
+    	    throw new UnsupportedOperationException();
+        }
+        if (n1.equals(n2)) {
+            return true;
+        }
 
-    }
-    public void dfsHelper(String search, string targer) {
-
+        return dfs(n1, n2);
     }
 
+    public Boolean dfs(String search, String target) {
+        HashMap<String, Boolean> visited = new HashMap<>();
+
+        BoolChecker result = new BoolChecker(false);
+
+        for (String key : nodes()){
+            visited.put(key, false);
+        }
+        dfsHelper(search, target, visited, result);
+        return result.getValue();
+        
+    }
+    public void dfsHelper(String search, String target, 
+                          HashMap<String, Boolean> visited, BoolChecker result){
+        if (search.equals(target)) {
+            result.setValue(true);
+        }
+
+        modifyHashMap(visited, search);
+        for (String adjnodes : succ(search)) {
+            if (!visited.get(adjnodes)) {
+                dfsHelper(adjnodes, target, visited, result);
+            }
+        }
+    
+    }
+
+    public void modifyHashMap(HashMap<String, Boolean> visited, String key) {
+        visited.put(key, true);
+    }
+    
+    public void newPrint(HashMap<String, Boolean> visited) {
+        for (String key : visited.keySet()) { // iterate over key of HashMap
+            System.out.print(key + ":" + visited.get(key)); 
+            
+		    System.out.println();
+
+        }
+    }
 }
