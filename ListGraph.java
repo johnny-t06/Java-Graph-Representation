@@ -31,6 +31,7 @@ public class ListGraph implements Graph {
         }
 		System.out.println();
     }
+    
     public boolean addNode(String n) {
 
         if (hasNode(n)) {

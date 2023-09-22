@@ -2,7 +2,7 @@
 import java.util.*; // Makes List available
 
 public interface Graph {
-    void print();
+    // void print();
     boolean addNode(String n);
     boolean addEdge(String n1, String n2);
     boolean hasNode(String n);
