@@ -371,6 +371,15 @@ public class Main {
 		assert !g.connected("a", "d");
 	}
 
+	public static void e_addEdge() {
+		Graph g = new ListGraph();
+		EdgeGraph e = new EdgeGraphAdapter(g);
+		Edge edge1 = new Edge("a", "b");
+		// Edge emptyEdge = new Edge("", "");
+		assert e.addEdge(edge1);
+		assert !e.addEdge(edge1);
+	}
+
     public static void main(String[] args) {
 		test1();
 		addEdgethrow();
@@ -391,6 +400,7 @@ public class Main {
 		connectedNonEmpty();
 		connected2();
 		connectedTest();
+		e_addEdge();
     }
 
 }
