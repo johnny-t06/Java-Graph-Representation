@@ -343,6 +343,34 @@ public class Main {
 		assert g.connected("A", "D");
 		assert !g.connected("B", "D");
 	}
+
+	public static void connected2() {
+		Graph g = new ListGraph();
+		assert g.addNode("a");
+		assert g.addNode("b");
+		assert g.addNode("c");
+		assert g.addEdge("a","b");
+		assert g.addEdge("b","c");
+	
+		// G is only connected from a to c, and not c to a
+		assert !g.connected("c", "a");
+		assert g.connected("a", "c");
+	}
+
+	public static void connectedTest() {
+		Graph g = new ListGraph();
+		assert g.addNode("a");
+		assert g.addNode("b");
+		assert g.addNode("c");
+		assert g.addNode("d");
+		assert g.addEdge("a", "b");
+		assert g.addEdge("a", "c");
+		assert g.addEdge("c", "d");
+		assert g.connected("a", "d");
+		assert g.removeNode("c");
+		assert !g.connected("a", "d");
+	}
+
     public static void main(String[] args) {
 		test1();
 		addEdgethrow();
@@ -361,6 +389,8 @@ public class Main {
 		subGraphNonEmpty();
 		subGraphEmpty();
 		connectedNonEmpty();
+		connected2();
+		connectedTest();
     }
 
 }
