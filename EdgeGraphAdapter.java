@@ -14,10 +14,10 @@ public class EdgeGraphAdapter implements EdgeGraph {
 		String dst = e.getDst();
 
 		
-		if (!hasNode(src)) {
+		if (!g.hasNode(src)) {
 			g.addNode(src);
 		}
-		if (!hasNode(dst)) {
+		if (!g.hasNode(dst)) {
 			g.addNode(dst);
 		}
 		if (g.hasEdge(src, dst)) {
@@ -28,8 +28,13 @@ public class EdgeGraphAdapter implements EdgeGraph {
 	}
 
 	public boolean hasNode(String n) {
+		if(!g.hasNode(n)) {
+			return false;
+		}
+
+
 		for (String nodes : g.nodes()) {
-			if(g.hasEdge(n, nodes) || g.hasEdge(nodes, n)) {
+			if (g.hasEdge(n, nodes) || g.hasEdge(nodes, n)) {
 				return true;
 			}
 		}
@@ -39,6 +44,10 @@ public class EdgeGraphAdapter implements EdgeGraph {
 	public boolean hasEdge(Edge e) {
 		String src = e.getSrc();
 		String dst = e.getDst();
+
+		if (!(g.hasNode(src) && g.hasNode(dst))) {
+			return false;
+		}
 		return(g.hasEdge(src, dst));
 	}
 
@@ -70,7 +79,12 @@ public class EdgeGraphAdapter implements EdgeGraph {
 
 	public List<Edge> outEdges(String n) {
 		List<Edge> toEdges = new LinkedList<>(); 
+		if (!g.hasNode(n)) {
+			throw new UnsupportedOperationException();
+		}
+
 		List<String> succNodes = g.succ(n);
+		
 		
 		for (String node : succNodes) {
 			Edge newEdge = new Edge(n , node);
@@ -84,6 +98,10 @@ public class EdgeGraphAdapter implements EdgeGraph {
 		List<Edge> toEdges = new LinkedList<>(); 
 		List<String> predNodes = g.pred(n); 
 
+		if (!g.hasNode(n)) {
+			throw new UnsupportedOperationException();
+		}
+		
 		for (String node : predNodes) {
 			Edge newEdge = new Edge(node, n);
 			toEdges.add(newEdge);

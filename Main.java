@@ -373,13 +373,106 @@ public class Main {
 
 	public static void e_addEdge() {
 		Graph g = new ListGraph();
-		EdgeGraph e = new EdgeGraphAdapter(g);
+		EdgeGraph eg = new EdgeGraphAdapter(g);
 		Edge edge1 = new Edge("a", "b");
 		// Edge emptyEdge = new Edge("", "");
-		assert e.addEdge(edge1);
-		assert !e.addEdge(edge1);
+		assert eg.addEdge(edge1);
+		assert !eg.addEdge(edge1);
+
+	}
+	
+	public static void e_hasNode() {
+		Graph g = new ListGraph();
+		EdgeGraph eg = new EdgeGraphAdapter(g);
+		Edge edge1 = new Edge("a", "b");
+		Edge edge2 = new Edge("b", "a");
+		Edge edge3 = new Edge("c", "a");
+
+		assert !eg.hasNode("a");		//checks if edges to node a, but none are added
+		assert eg.addEdge(edge1);
+		assert eg.addEdge(edge2);
+		assert eg.addEdge(edge3);
+		assert eg.hasNode("a");
+		assert eg.hasNode("b");
+		assert !eg.hasNode("d");
 	}
 
+	public static void e_hasEdge() {
+		Graph g = new ListGraph();
+		EdgeGraph eg = new EdgeGraphAdapter(g);
+		Edge edge1 = new Edge("a", "b");
+		Edge edge2 = new Edge("b", "a");
+		Edge edge3 = new Edge("c", "a");
+		
+		assert !eg.hasEdge(edge1);
+		assert !eg.hasEdge(edge3);
+
+		assert eg.addEdge(edge1);
+		assert eg.addEdge(edge2);
+		assert eg.addEdge(edge3);
+
+		assert eg.hasEdge(edge1);
+		assert eg.hasEdge(edge2);
+		assert eg.hasEdge(edge3);
+
+	}
+
+	public static void eg_removeEdge() {
+		Graph g = new ListGraph();
+		EdgeGraph eg = new EdgeGraphAdapter(g);
+		Edge edge1 = new Edge("a", "b");
+		Edge edge3 = new Edge("c", "a");
+
+		assert !eg.removeEdge(edge1);
+		
+		assert eg.addEdge(edge1);
+		assert eg.addEdge(edge3);
+
+		assert eg.removeEdge(edge3);
+
+		assert !eg.hasNode("c");	//node c is deleted because last node connection edge 3, is gone
+		assert eg.hasNode("a");		//node a is good because it has edge1 connection
+		
+	}
+
+	public static void eg_removeEdgeOther() {
+		Graph g = new ListGraph();
+		EdgeGraph eg = new EdgeGraphAdapter(g);
+		Edge edge1 = new Edge("a", "b");
+		Edge edge2 = new Edge("c", "d");
+		Edge edge3 = new Edge("c", "a");
+
+
+		assert !eg.removeEdge(edge1);
+		
+		assert eg.addEdge(edge1);
+		assert eg.addEdge(edge2);
+		assert eg.addEdge(edge3);
+
+		assert eg.removeEdge(edge3);
+
+		assert eg.hasNode("c");	
+		assert eg.hasNode("a");	
+	}
+	public static void eg_outEdgesNonEmpty() {
+		Graph g = new ListGraph();
+		EdgeGraph eg = new EdgeGraphAdapter(g);
+		Edge edge1 = new Edge("a", "b");
+		Edge edge2 = new Edge("c", "d");
+		Edge edge3 = new Edge("c", "a");
+
+		assert eg.addEdge(edge1);
+		assert eg.addEdge(edge2);
+		assert eg.addEdge(edge3);
+		List <Edge> outEdges = eg.outEdges("a");
+
+		assert (outEdges.size() == 1);
+		for (Edge outEdge : outEdges) { 
+			System.out.print(outEdge.getDst() + " ");
+		}
+		System.out.println();
+
+	}
     public static void main(String[] args) {
 		test1();
 		addEdgethrow();
@@ -401,6 +494,11 @@ public class Main {
 		connected2();
 		connectedTest();
 		e_addEdge();
+		e_hasNode();
+		e_hasEdge();
+		eg_removeEdge();
+		eg_removeEdgeOther();
+		eg_outEdgesNonEmpty();
     }
 
 }

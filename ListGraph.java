@@ -223,6 +223,7 @@ public class ListGraph implements Graph {
         }
 
         modifyHashMap(visited, search);
+        
         for (String adjnodes : succ(search)) {
             if (!visited.get(adjnodes)) {
                 dfsHelper(adjnodes, target, visited, result);
