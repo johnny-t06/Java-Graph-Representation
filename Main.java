@@ -552,6 +552,53 @@ public class Main {
 
 	}
 
+	public static void eg_hasPathNonEmpty() {
+		Graph g = new ListGraph();
+
+		EdgeGraph eg = new EdgeGraphAdapter(g);
+		Edge edge1 = new Edge("a", "b");
+		Edge edge2 = new Edge("b", "a");
+		Edge edge3 = new Edge("c", "a");
+		Edge edge4 = new Edge("a", "a");
+		List <Edge> edgeList = new LinkedList<>();
+		edgeList.add(edge1);
+		edgeList.add(edge2);
+		edgeList.add(edge3);
+		edgeList.add(edge4);
+
+
+		assert eg.addEdge(edge1);
+		assert eg.addEdge(edge2);
+		assert eg.addEdge(edge3);
+		assert eg.addEdge(edge4);
+
+		assert !eg.hasPath(edgeList);
+		
+	}
+
+	public static void eg_hasPathTrue() {
+		Graph g = new ListGraph();
+
+		EdgeGraph eg = new EdgeGraphAdapter(g);
+		Edge edge1 = new Edge("a", "b");
+		Edge edge2 = new Edge("b", "a");
+		Edge edge3 = new Edge("a", "c");
+		Edge edge4 = new Edge("a", "a");
+		List <Edge> edgeList = new LinkedList<>();
+		edgeList.add(edge1);
+		edgeList.add(edge2);
+		edgeList.add(edge3);
+
+
+
+		assert eg.addEdge(edge1);
+		assert eg.addEdge(edge2);
+		assert eg.addEdge(edge3);
+		assert eg.addEdge(edge4);
+
+		assert eg.hasPath(edgeList);	
+	}
+	
     public static void main(String[] args) {
 		test1();
 		addEdgethrow();
@@ -581,6 +628,8 @@ public class Main {
 		eg_inEdgesNonEmpty();
 		eg_edgesNonEmpty();
 		eg_unionNonEmpty();
+		eg_hasPathNonEmpty();
+		eg_hasPathTrue();
     }
 
 }

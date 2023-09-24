@@ -114,7 +114,7 @@ public class EdgeGraphAdapter implements EdgeGraph {
 		List <String> allNodes = g.nodes();
 		List <Edge> allEdges = new LinkedList<>();
 
-		for(String eachNode : allNodes) {
+		for (String eachNode : allNodes) {
 			List <String> eachSuccList = g.succ(eachNode);
 			for (String eachSucc : eachSuccList) {
 				Edge newEdge = new Edge(eachNode, eachSucc); 
@@ -144,8 +144,21 @@ public class EdgeGraphAdapter implements EdgeGraph {
 		return newEdgeGraph;
 	}
 
-	public boolean hasPath(List<Edge> e) {
-		throw new UnsupportedOperationException();
+	public boolean hasPath(List<Edge> l) {
+		if (l.size() == 0) {
+			return false;
+		}
+		String DSTcheck = l.get(0).getSrc();
+		for (Edge eachEdge : l) {
+			if (!hasEdge(eachEdge)) {
+				return false;
+			}
+			if (!DSTcheck.equals(eachEdge.getSrc())) {
+				return false;
+			}
+			DSTcheck = eachEdge.getDst();
+		}
+		return true;
 	}
 
 }
