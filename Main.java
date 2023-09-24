@@ -467,12 +467,91 @@ public class Main {
 		List <Edge> outEdges = eg.outEdges("a");
 
 		assert (outEdges.size() == 1);
-		for (Edge outEdge : outEdges) { 
-			System.out.print(outEdge.getDst() + " ");
-		}
-		System.out.println();
+		// for (Edge outEdge : outEdges) { 
+		// 	System.out.print(outEdge.getDst() + " ");
+		// }
+		// System.out.println();
 
 	}
+
+	public static void eg_inEdgesNonEmpty() {
+		Graph g = new ListGraph();
+		EdgeGraph eg = new EdgeGraphAdapter(g);
+		Edge edge1 = new Edge("a", "b");
+		Edge edge2 = new Edge("b", "a");
+		Edge edge3 = new Edge("c", "a");
+
+		assert eg.addEdge(edge1);
+		assert eg.addEdge(edge2);
+		assert eg.addEdge(edge3);
+		List <Edge> inEdges = eg.inEdges("a");
+		assert (inEdges.size() == 2);
+		// for (Edge inEdge : inEdges) { 
+		// 	System.out.print(inEdges.getSrc() + " ");
+		// }
+		// System.out.println();
+	}
+
+	public static void eg_edgesNonEmpty() {
+		Graph g = new ListGraph();
+		EdgeGraph eg = new EdgeGraphAdapter(g);
+		Edge edge1 = new Edge("a", "b");
+		Edge edge2 = new Edge("b", "a");
+		Edge edge3 = new Edge("c", "a");
+		Edge edge4 = new Edge("a", "a");
+
+
+		assert eg.addEdge(edge1);
+		assert eg.addEdge(edge2);
+		assert eg.addEdge(edge3);
+		assert eg.addEdge(edge4);
+
+		List <Edge> allEdges = eg.edges();
+		assert (allEdges.size() == 4);
+		// for (Edge edge : allEdges) { 
+		// 	System.out.println("SRC: " + edge.getSrc() + " DST: " + edge.getDst());
+		// }
+		// System.out.println();
+	}
+
+	public static void eg_unionNonEmpty() {
+		Graph g = new ListGraph();
+
+		EdgeGraph eg = new EdgeGraphAdapter(g);
+		Edge edge1 = new Edge("a", "b");
+		Edge edge2 = new Edge("b", "a");
+		Edge edge3 = new Edge("c", "a");
+		Edge edge4 = new Edge("a", "a");
+
+		assert eg.addEdge(edge1);
+		assert eg.addEdge(edge2);
+		assert eg.addEdge(edge3);
+		assert eg.addEdge(edge4);
+
+		Graph g2 = new ListGraph();
+
+		EdgeGraph eg2 = new EdgeGraphAdapter(g2);
+		Edge edge5 = new Edge("a", "b");		//same Edge
+		Edge edge6 = new Edge("b", "a");		//same Edge
+		Edge edge7 = new Edge("c", "d");		//new Edge to new Node
+		Edge edge8 = new Edge("d", "d");		//New Edge
+
+		assert eg2.addEdge(edge5);
+		assert eg2.addEdge(edge6);
+		assert eg2.addEdge(edge7);
+		assert eg2.addEdge(edge8);
+
+		EdgeGraph unioned = eg.union(eg2);
+		
+		List <Edge> allEdges = unioned.edges();
+		assert (allEdges.size() == 6);
+		// for (Edge edge : allEdges) { 
+		// 	System.out.println("SRC: " + edge.getSrc() + " DST: " + edge.getDst());
+		// }
+		// System.out.println();
+
+	}
+
     public static void main(String[] args) {
 		test1();
 		addEdgethrow();
@@ -499,6 +578,9 @@ public class Main {
 		eg_removeEdge();
 		eg_removeEdgeOther();
 		eg_outEdgesNonEmpty();
+		eg_inEdgesNonEmpty();
+		eg_edgesNonEmpty();
+		eg_unionNonEmpty();
     }
 
 }

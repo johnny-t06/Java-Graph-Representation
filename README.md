@@ -1,3 +1,4 @@
 # Proj1
 
-LsitGraph Implementation of a given interface
+ListGraph Implementation of a Graph interface
+EdgeGraphAdapter implementation of a EdgeGraph interface

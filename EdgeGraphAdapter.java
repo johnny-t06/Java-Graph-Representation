@@ -111,11 +111,37 @@ public class EdgeGraphAdapter implements EdgeGraph {
 	}	
 
 	public List<Edge> edges() {
-		throw new UnsupportedOperationException();
+		List <String> allNodes = g.nodes();
+		List <Edge> allEdges = new LinkedList<>();
+
+		for(String eachNode : allNodes) {
+			List <String> eachSuccList = g.succ(eachNode);
+			for (String eachSucc : eachSuccList) {
+				Edge newEdge = new Edge(eachNode, eachSucc); 
+				allEdges.add(newEdge);
+			}
+		}
+
+		return allEdges;
 	}
 
 	public EdgeGraph union(EdgeGraph g) {
-		throw new UnsupportedOperationException();
+		Graph newGraph = new ListGraph();
+		EdgeGraph newEdgeGraph = new EdgeGraphAdapter(newGraph);
+		List <Edge> thisEdges = edges();
+		List <Edge> otherEdges = g.edges();
+
+		//add eachedge from this EdgeGraph
+		for (Edge eachEdge : thisEdges) {
+			newEdgeGraph.addEdge(eachEdge);
+		}
+
+		//add eachEdge from other EdgeGraph 
+		for (Edge eachEdge : otherEdges) {
+			newEdgeGraph.addEdge(eachEdge);
+		}
+		
+		return newEdgeGraph;
 	}
 
 	public boolean hasPath(List<Edge> e) {
