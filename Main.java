@@ -65,13 +65,13 @@ public class Main {
 		assert g.removeNode("b");
 
 	}
-    // public static void test2() {
-	// Graph g = new ListGraph();
-	// EdgeGraph eg = new EdgeGraphAdapter(g);
-	// Edge e = new Edge("a", "b");
-	// assert eg.addEdge(e);
-	// assert eg.hasEdge(e);
-    // }
+    public static void test2() {
+	Graph g = new ListGraph();
+	EdgeGraph eg = new EdgeGraphAdapter(g);
+	Edge e = new Edge("a", "b");
+	assert eg.addEdge(e);
+	assert eg.hasEdge(e);
+    }
 
 	public static void removeEdgeBoth() {
 		Graph g = new ListGraph();
@@ -619,37 +619,38 @@ public class Main {
 	}
 
     public static void main(String[] args) {
-		// test1();
-		// addEdgethrow();
-		// removeNodeBoth();
-		// removeEdgeBoth();
-		// listNodes();
-		// listNodesEmpty();
-		// succNonEmpty();
-		// succThrow();
-		// succEmpty();
-		// predNonEmpty();
-		// predThrow();
-		// predEmpty();
-		// unionNonEmpty();
-		// unionOverlap();
-		// subGraphNonEmpty();
-		// subGraphEmpty();
-		// connectedNonEmpty();
-		// connected2();
-		// connectedTest();
-		// e_addEdge();
-		// e_hasNode();
-		// e_hasEdge();
-		// eg_removeEdge();
-		// eg_removeEdgeOther();
-		// eg_outEdgesNonEmpty();
-		// eg_inEdgesNonEmpty();
-		// eg_edgesNonEmpty();
-		// eg_unionNonEmpty();
-		// eg_hasPathNonEmpty();
-		// eg_hasPathTrue();
+		test1();
+		addEdgethrow();
+		removeNodeBoth();
+		removeEdgeBoth();
+		listNodes();
+		listNodesEmpty();
+		succNonEmpty();
+		succThrow();
+		succEmpty();
+		predNonEmpty();
+		predThrow();
+		predEmpty();
+		unionNonEmpty();
+		unionOverlap();
+		subGraphNonEmpty();
+		subGraphEmpty();
+		connectedNonEmpty();
+		connected2();
+		connectedTest();
+		e_addEdge();
+		e_hasNode();
+		e_hasEdge();
+		eg_removeEdge();
+		eg_removeEdgeOther();
+		eg_outEdgesNonEmpty();
+		eg_inEdgesNonEmpty();
+		eg_edgesNonEmpty();
+		eg_unionNonEmpty();
+		eg_hasPathNonEmpty();
+		eg_hasPathTrue();
 		removeNodewithEdge();
+		test2();
     }
 
 }

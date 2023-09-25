@@ -20,17 +20,17 @@ public class ListGraph implements Graph {
         }
     }
     
-    public void print() {
-        for (String key : nodes.keySet()) { // iterate over key of HashMap
-            System.out.print(key + ":"); 
-            for (String value : nodes.get(key)) { // iterate through elements of nodes.get("a")
-                System.out.print(value + " "); 
-            }
-		    System.out.println();
+    // public void print() {
+    //     for (String key : nodes.keySet()) { // iterate over key of HashMap
+    //         System.out.print(key + ":"); 
+    //         for (String value : nodes.get(key)) { // iterate through elements of nodes.get("a")
+    //             System.out.print(value + " "); 
+    //         }
+	// 	    System.out.println();
 
-        }
-		System.out.println();
-    }
+    //     }
+	// 	System.out.println();
+    // }
     
     public boolean addNode(String n) {
 
@@ -236,12 +236,12 @@ public class ListGraph implements Graph {
         visited.put(key, true);
     }
     
-    public void newPrint(HashMap<String, Boolean> visited) {
-        for (String key : visited.keySet()) { // iterate over key of HashMap
-            System.out.print(key + ":" + visited.get(key)); 
+    // public void newPrint(HashMap<String, Boolean> visited) {
+    //     for (String key : visited.keySet()) { // iterate over key of HashMap
+    //         System.out.print(key + ":" + visited.get(key)); 
             
-		    System.out.println();
+	// 	    System.out.println();
 
-        }
-    }
+    //     }
+    // }
 }
