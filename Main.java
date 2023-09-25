@@ -572,7 +572,11 @@ public class Main {
 		assert eg.addEdge(edge3);
 		assert eg.addEdge(edge4);
 
-		assert !eg.hasPath(edgeList);
+		try {
+			eg.hasPath(edgeList);
+		} catch (BadPath e) {
+			// System.out.println("Caught " + e.getMessage());
+		}	//edge 3 does not connect with edge4
 		
 	}
 
@@ -598,7 +602,7 @@ public class Main {
 
 		assert eg.hasPath(edgeList);	
 	}
-	
+
     public static void main(String[] args) {
 		test1();
 		addEdgethrow();

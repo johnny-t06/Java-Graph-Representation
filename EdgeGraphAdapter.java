@@ -154,7 +154,7 @@ public class EdgeGraphAdapter implements EdgeGraph {
 				return false;
 			}
 			if (!DSTcheck.equals(eachEdge.getSrc())) {
-				return false;
+				throw new BadPath("This is a BadPath");
 			}
 			DSTcheck = eachEdge.getDst();
 		}
