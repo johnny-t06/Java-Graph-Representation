@@ -45,7 +45,7 @@ public class ListGraph implements Graph {
 
     public boolean addEdge(String n1, String n2) {
         if(!(hasNode(n1) && hasNode(n2))) {
-	        throw new UnsupportedOperationException();
+	        throw new NoSuchElementException();
         }
 
         if (nodes.get(n1).contains(n2)) {
@@ -65,7 +65,7 @@ public class ListGraph implements Graph {
 
     public boolean hasEdge(String n1, String n2) {
         if (!(hasNode(n1) && hasNode(n2))) {
-	        throw new UnsupportedOperationException();
+	        return false;
         }
         return nodes.get(n1).contains(n2);
     }
@@ -89,7 +89,7 @@ public class ListGraph implements Graph {
 
     public boolean removeEdge(String n1, String n2) {
         if(!(hasNode(n1) && hasNode(n2))){
-	        throw new UnsupportedOperationException();
+	        throw new NoSuchElementException ();
         }
 
         for (String value : nodes.get(n1)) {
@@ -112,7 +112,7 @@ public class ListGraph implements Graph {
 
     public List<String> succ(String n) {
 	    if (!hasNode(n)) {
-	        throw new UnsupportedOperationException();
+	        throw new NoSuchElementException();
         }
         List<String> allsucc = new LinkedList<>();
         for (String key : nodes.get(n)) {
@@ -123,7 +123,7 @@ public class ListGraph implements Graph {
 
     public List<String> pred(String n) {
         if (!hasNode(n)) {
-	        throw new UnsupportedOperationException();
+	        throw new NoSuchElementException();
         }
         List<String> allpred = new LinkedList<>();
         for (String key : nodes.keySet()) {
@@ -195,7 +195,7 @@ public class ListGraph implements Graph {
 
     public boolean connected(String n1, String n2) {
         if (!(hasNode(n1) && hasNode(n2))) {
-    	    throw new UnsupportedOperationException();
+    	    throw new NoSuchElementException();
         }
         if (n1.equals(n2)) {
             return true;

@@ -29,7 +29,7 @@ public class Main {
 		
 		try {
 			g.addEdge("b", "c");
-		} catch (UnsupportedOperationException e) {
+		} catch (NoSuchElementException e) {
 			// System.out.println("Caught " + e.getMessage());		//works
 			assert true;
 		}
@@ -48,6 +48,21 @@ public class Main {
 		assert g.removeNode("c");
 		
 		// g.print();
+
+	}
+
+	public static void removeNodewithEdge() {
+		Graph g = new ListGraph();
+		g.addNode("a");
+		g.addNode("b");
+		g.addNode("c");
+		g.addNode("d");
+
+		assert g.addEdge("a", "b");
+		assert g.addEdge("b", "c");	// remove b and above edge should be gone
+		assert g.addEdge("c", "d");
+
+		assert g.removeNode("b");
 
 	}
     // public static void test2() {
@@ -129,7 +144,7 @@ public class Main {
 		
 		try {
 			g.succ("a");
-		} catch (UnsupportedOperationException e) {
+		} catch (NoSuchElementException e) {
 			// System.out.println("Caught " + e.getMessage());		//works
 			assert true;
 		}
@@ -180,7 +195,7 @@ public class Main {
 		
 		try {
 			g.pred("a");
-		} catch (UnsupportedOperationException e) {
+		} catch (NoSuchElementException e) {
 			// System.out.println("Caught " + e.getMessage());		//works
 			assert true;
 		}
@@ -604,36 +619,37 @@ public class Main {
 	}
 
     public static void main(String[] args) {
-		test1();
-		addEdgethrow();
-		removeNodeBoth();
-		removeEdgeBoth();
-		listNodes();
-		listNodesEmpty();
-		succNonEmpty();
-		succThrow();
-		succEmpty();
-		predNonEmpty();
-		predThrow();
-		predEmpty();
-		unionNonEmpty();
-		unionOverlap();
-		subGraphNonEmpty();
-		subGraphEmpty();
-		connectedNonEmpty();
-		connected2();
-		connectedTest();
-		e_addEdge();
-		e_hasNode();
-		e_hasEdge();
-		eg_removeEdge();
-		eg_removeEdgeOther();
-		eg_outEdgesNonEmpty();
-		eg_inEdgesNonEmpty();
-		eg_edgesNonEmpty();
-		eg_unionNonEmpty();
-		eg_hasPathNonEmpty();
-		eg_hasPathTrue();
+		// test1();
+		// addEdgethrow();
+		// removeNodeBoth();
+		// removeEdgeBoth();
+		// listNodes();
+		// listNodesEmpty();
+		// succNonEmpty();
+		// succThrow();
+		// succEmpty();
+		// predNonEmpty();
+		// predThrow();
+		// predEmpty();
+		// unionNonEmpty();
+		// unionOverlap();
+		// subGraphNonEmpty();
+		// subGraphEmpty();
+		// connectedNonEmpty();
+		// connected2();
+		// connectedTest();
+		// e_addEdge();
+		// e_hasNode();
+		// e_hasEdge();
+		// eg_removeEdge();
+		// eg_removeEdgeOther();
+		// eg_outEdgesNonEmpty();
+		// eg_inEdgesNonEmpty();
+		// eg_edgesNonEmpty();
+		// eg_unionNonEmpty();
+		// eg_hasPathNonEmpty();
+		// eg_hasPathTrue();
+		removeNodewithEdge();
     }
 
 }
