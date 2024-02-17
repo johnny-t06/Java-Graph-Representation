@@ -1,5 +1,13 @@
+/*
+ * Johnny Tan
+ * Edited: 02/16/2024
+ * Purpose: Implements EdgeGraph interface with polymophmism emphasis on 
+ * 			Graph and EdgeGraph
+ */
+
 
 import java.util.*;
+
 
 public class EdgeGraphAdapter implements EdgeGraph {
 

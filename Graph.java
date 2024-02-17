@@ -1,3 +1,8 @@
+/*
+ * Johnny Tan
+ * Edited: 02/16/2024
+ * Purpose: Graph interface
+ */
 
 import java.util.*; // Makes List available
 
