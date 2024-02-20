@@ -1,4 +1,8 @@
-
+/*
+ * Johnny Tan
+ * Edited: 02/19/2024
+ * Purpose: Implementation for EdgeGraph. Sets up polymorphism with Graph
+ */
 public class Edge {
     private String src, dst; // source, destination
     public Edge(String src, String dst) {

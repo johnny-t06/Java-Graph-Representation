@@ -1,7 +1,7 @@
 /*
  * Johnny Tan
- * Edited: 02/16/2024
- * Purpose: Implements EdgeGraph interface with polymophmism emphasis on 
+ * Edited: 02/19/2024
+ * Purpose: Implements EdgeGraphAdapted interface with polymophmism emphasis on 
  * 			Graph and EdgeGraph
  */
 

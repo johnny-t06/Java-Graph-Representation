@@ -1,3 +1,8 @@
+/*
+ * Johnny Tan
+ * Edited: 02/19/2024
+ * Purpose: Interface for EdgeGraph. Sets up polymorphism with Graph
+ */
 import java.util.*;
 
 public interface EdgeGraph {
